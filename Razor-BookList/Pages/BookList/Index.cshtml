@@ -1,5 +1,4 @@
 ﻿@page
-
 @model Razor_BookList.Pages.BookList.IndexModel
 
 <br />
@@ -14,7 +13,7 @@
     <div class="col-12 boader p-3 mt-3">
         <form method="post">
             @*this Model is the page model*@
-            @if (Model.Books.Count() > 0)
+            @if (Model?.Books?.Count() > 0)
             {
                 <table class="table table-striped border">
                     <tr class="table-secondary">
@@ -43,7 +42,7 @@
                         @Html.DisplayFor(m => item.ISBN)
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger btn-sm">Delete</button>
                         <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Edit</a>
                     </td>
                 </tr>
